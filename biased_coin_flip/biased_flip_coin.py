@@ -20,7 +20,6 @@ def biasedflip(trials,prob,runs=10):
     print("{0}\t{1}\t{2}").format(r,nhead,ntail)
   print("sum of total iternations\n-\t-\t-\t")
   print("{0}\t{1}\t{2}").format(r,heads,tails)
-  print("Expected probabality = {0}\nObserved Probability {1}/({2}+{3}) = {4} ").format(prob,heads,heads,tails,100*heads/float(heads+tails))
   return heads,tails
 
 
@@ -32,4 +31,6 @@ prob=int(input("Plesae provide the probabality to bias the flip of coin to retur
 if 1<= prob >100:
   prob=int(input("Plesae provide the probabality to bias the flip of coin to return heads range (0-100)  : "))
 
-biasedflip(trials,prob,runs)
+total_heads,total_tails=biasedflip(trials,prob,runs)
+obs_prob=round(total_heads*100/float(total_heads+total_tails),2)
+print("Expected probabality = {0}\nObserved Probability {1}/({1}+{2}) = {3} ").format(prob,total_heads,total_tails,obs_prob)
